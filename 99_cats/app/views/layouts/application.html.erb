@@ -12,11 +12,15 @@
     <header>
       <%if logged_in?%>
         <h2>Welcome, <%=current_user.username%>!</h2>
+        <form action="<%= session_url %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Logout">
+        </form>
       <% else %>
-        <form action="<%=new_session_url%>">
+        <form action="<%= new_session_url %>">
           <input type="submit" value="Login">
         </form>
-        <form action="<%=new_user_url%>">
+        <form action="<%= new_user_url %>">
           <input type="submit" value="Signup">
         </form>
       <% end %>
